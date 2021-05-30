@@ -1,17 +1,19 @@
 package main
 
 import (
+	"log"
 	"os"
-	"log"	
+
 	"github.com/joho/godotenv"
 )
 
 func main() {
 	a := App{}
-	err := godotenv.Load(".env")
+	gopath := os.Getenv("GOPATH")
+	err := godotenv.Load(gopath + "/src/github.com/eduardoborba/go-rest-api/.env")
 
 	if err != nil {
-	  log.Fatalf("Error loading .env file")
+		log.Fatalf("Error loading .env file")
 	}
 
 	a.Initialize(
